@@ -85,3 +85,5 @@ create table dbo.Contract-- Договор
 	Cost money not null
 )
 go
+
+--drop table if exists example
