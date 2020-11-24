@@ -1,14 +1,14 @@
 use ARCs
 go
 
---			Процедуры
+--			РџСЂРѕС†РµРґСѓСЂС‹
 
 
 
---		Заполнение таблиц данными
+--		Р—Р°РїРѕР»РЅРµРЅРёРµ С‚Р°Р±Р»РёС† РґР°РЅРЅС‹РјРё
 
 
---Заказчик
+--Р—Р°РєР°Р·С‡РёРє
 create proc inputDataCustomer( @nvcS nvarchar(70), @nvcN nvarchar(70),
 @nvcP nvarchar(70), @c char(20), @vc varchar(250) )
 as
@@ -18,19 +18,19 @@ begin
 end
 go
 
-exec inputDataCustomer 'Кузьмин', 'Святослав', 'Андреевич', '+79117640001',
+exec inputDataCustomer 'РљСѓР·СЊРјРёРЅ', 'РЎРІСЏС‚РѕСЃР»Р°РІ', 'РђРЅРґСЂРµРµРІРёС‡', '+79117640001',
 ''
 go
-exec inputDataCustomer 'Шилов', 'Владислав', 'Владислав', '+79520550002', 
+exec inputDataCustomer 'РЁРёР»РѕРІ', 'Р’Р»Р°РґРёСЃР»Р°РІ', 'Р’Р»Р°РґРёСЃР»Р°РІ', '+79520550002', 
 'shilovVV0002@mail.ru'
 go
-exec inputDataCustomer 'Рожкова', 'Марфа', 'Иринеевна', '+79229830003',
+exec inputDataCustomer 'Р РѕР¶РєРѕРІР°', 'РњР°СЂС„Р°', 'РСЂРёРЅРµРµРІРЅР°', '+79229830003',
 'RozhkovaMarphaE0003'
 go
-exec inputDataCustomer 'Щербаков', 'Никифор', 'Витальевич', '+79625530004', 
+exec inputDataCustomer 'Р©РµСЂР±Р°РєРѕРІ', 'РќРёРєРёС„РѕСЂ', 'Р’РёС‚Р°Р»СЊРµРІРёС‡', '+79625530004', 
 ''
 go
-exec inputDataCustomer 'Харитонова', 'Наталия', 'Григорьевна', '+79999640005',
+exec inputDataCustomer 'РҐР°СЂРёС‚РѕРЅРѕРІР°', 'РќР°С‚Р°Р»РёСЏ', 'Р“СЂРёРіРѕСЂСЊРµРІРЅР°', '+79999640005',
 'KharitonovaNG0005@gmail.com'
 go
 
@@ -38,7 +38,7 @@ go
 --go
 
 
---Компании
+--РљРѕРјРїР°РЅРёРё
 create proc inputDataCompanies( @nvc nvarchar(250), @c char(20), @vc varchar(250) )
 as 
 begin
@@ -47,18 +47,18 @@ begin
 end	
 go
 
-exec inputDataCompanies 'Студия Ремонтов', '+78124674230', ''
+exec inputDataCompanies 'РЎС‚СѓРґРёСЏ Р РµРјРѕРЅС‚РѕРІ', '+78124674230', ''
 go
 exec inputDataCompanies 'SBAX', '+78126605520', 'sales@sbax.ru'
 go
-exec inputDataCompanies 'Еврохаус', '+78123895599', 'info@eurohouse.spb.ru'
+exec inputDataCompanies 'Р•РІСЂРѕС…Р°СѓСЃ', '+78123895599', 'info@eurohouse.spb.ru'
 go
 
 --drop proc inputDataCompanies
 --go
 
 
---Сотрудники
+--РЎРѕС‚СЂСѓРґРЅРёРєРё
 create proc inputDataEmployees( @nvcS nvarchar(70), @nvcN nvarchar(70), 
 @nvcP nvarchar(70), @c char(20), @vc varchar(250) )
 as
@@ -68,49 +68,49 @@ begin
 end
 go
 
-exec inputDataEmployees 'Жуков', 'Дмитрий', 'Вениаминович', '+79994670001',
+exec inputDataEmployees 'Р–СѓРєРѕРІ', 'Р”РјРёС‚СЂРёР№', 'Р’РµРЅРёР°РјРёРЅРѕРІРёС‡', '+79994670001',
 'zdv01@mail.ru'
 go
-exec inputDataEmployees 'Тарасов', 'Леонид', 'Алексеевич', '+79994670002',
+exec inputDataEmployees 'РўР°СЂР°СЃРѕРІ', 'Р›РµРѕРЅРёРґ', 'РђР»РµРєСЃРµРµРІРёС‡', '+79994670002',
 'tla02@mail.ru'
 go
-exec inputDataEmployees 'Белоусов', 'Антон', 'Аркадьевич', '+79994670003',
+exec inputDataEmployees 'Р‘РµР»РѕСѓСЃРѕРІ', 'РђРЅС‚РѕРЅ', 'РђСЂРєР°РґСЊРµРІРёС‡', '+79994670003',
 'baa03@mail.ru'
 go
-exec inputDataEmployees 'Бобылёв', 'Панкратий', 'Мэлсович', '+79994670004',
+exec inputDataEmployees 'Р‘РѕР±С‹Р»С‘РІ', 'РџР°РЅРєСЂР°С‚РёР№', 'РњСЌР»СЃРѕРІРёС‡', '+79994670004',
 'bpm04@mail.ru'
 go
-exec inputDataEmployees 'Власова', 'Эльвира', 'Львовна', '+79994670005',
+exec inputDataEmployees 'Р’Р»Р°СЃРѕРІР°', 'Р­Р»СЊРІРёСЂР°', 'Р›СЊРІРѕРІРЅР°', '+79994670005',
 ''
 go
-exec inputDataEmployees 'Силин', 'Бронислав', 'Лаврентьевич', '+79996600001',
+exec inputDataEmployees 'РЎРёР»РёРЅ', 'Р‘СЂРѕРЅРёСЃР»Р°РІ', 'Р›Р°РІСЂРµРЅС‚СЊРµРІРёС‡', '+79996600001',
 'sbl01@sbax.ru'
 go
-exec inputDataEmployees 'Беспалов', 'Борис', 'Филиппович', '+79996600002',
+exec inputDataEmployees 'Р‘РµСЃРїР°Р»РѕРІ', 'Р‘РѕСЂРёСЃ', 'Р¤РёР»РёРїРїРѕРІРёС‡', '+79996600002',
 'bbf02@sbax.ru'
 go
-exec inputDataEmployees 'Хохлов', 'Тарас', 'Анатольевич', '+79996600003',
+exec inputDataEmployees 'РҐРѕС…Р»РѕРІ', 'РўР°СЂР°СЃ', 'РђРЅР°С‚РѕР»СЊРµРІРёС‡', '+79996600003',
 ''
 go
-exec inputDataEmployees 'Лихачёв', 'Иосиф', 'Федорович', '+79996600004',
+exec inputDataEmployees 'Р›РёС…Р°С‡С‘РІ', 'РРѕСЃРёС„', 'Р¤РµРґРѕСЂРѕРІРёС‡', '+79996600004',
 'lif04@sbax.ru'
 go
-exec inputDataEmployees 'Субботина', 'Веста', 'Иринеевна', '+79996600005',
+exec inputDataEmployees 'РЎСѓР±Р±РѕС‚РёРЅР°', 'Р’РµСЃС‚Р°', 'РСЂРёРЅРµРµРІРЅР°', '+79996600005',
 'svi05@sbax.ru'
 go
-exec inputDataEmployees 'Павлов', 'Емельян', 'Федотович', '+79993890001',
+exec inputDataEmployees 'РџР°РІР»РѕРІ', 'Р•РјРµР»СЊСЏРЅ', 'Р¤РµРґРѕС‚РѕРІРёС‡', '+79993890001',
 'pef01mail@peremont.ru'
 go
-exec inputDataEmployees 'Копылов', 'Дмитрий', 'Артемович', '+79993890002',
+exec inputDataEmployees 'РљРѕРїС‹Р»РѕРІ', 'Р”РјРёС‚СЂРёР№', 'РђСЂС‚РµРјРѕРІРёС‡', '+79993890002',
 'kda02mail@peremont.ru'
 go
-exec inputDataEmployees 'Николаев', 'Давид', 'Николаевич', '+79993890003',
+exec inputDataEmployees 'РќРёРєРѕР»Р°РµРІ', 'Р”Р°РІРёРґ', 'РќРёРєРѕР»Р°РµРІРёС‡', '+79993890003',
 'ndn03mail@peremont.ru'
 go
-exec inputDataEmployees 'Доронин', 'Федор', 'Аркадьевич', '+79993890004',
+exec inputDataEmployees 'Р”РѕСЂРѕРЅРёРЅ', 'Р¤РµРґРѕСЂ', 'РђСЂРєР°РґСЊРµРІРёС‡', '+79993890004',
 'dfa04mail@peremont.ru'
 go
-exec inputDataEmployees 'Крюкова', 'Светлана', 'Петровна', '+79993890005',
+exec inputDataEmployees 'РљСЂСЋРєРѕРІР°', 'РЎРІРµС‚Р»Р°РЅР°', 'РџРµС‚СЂРѕРІРЅР°', '+79993890005',
 'ksp05mail@peremont.ru'
 go
 
@@ -118,7 +118,7 @@ go
 --go
 
 
---КомпанииСотрудники
+--РљРѕРјРїР°РЅРёРёРЎРѕС‚СЂСѓРґРЅРёРєРё
 create proc inputDataCompaniesEmployees( @iC int, @iE int )
 as
 begin
@@ -162,7 +162,7 @@ go
 --go
 
 
---Услуги
+--РЈСЃР»СѓРіРё
 create proc inputDataServices( @iS int, @nvc nvarchar(250), @iC int,  @m money )
 as
 begin
@@ -171,30 +171,30 @@ begin
 end
 go
 
-exec inputDataServices 1, 'Черновой ремонт', 1, 2350 --за кв. метр
+exec inputDataServices 1, 'Р§РµСЂРЅРѕРІРѕР№ СЂРµРјРѕРЅС‚', 1, 2350 --Р·Р° РєРІ. РјРµС‚СЂ
 go
-exec inputDataServices 2, 'Косметический ремонт', 1, 2790
+exec inputDataServices 2, 'РљРѕСЃРјРµС‚РёС‡РµСЃРєРёР№ СЂРµРјРѕРЅС‚', 1, 2790
 go
-exec inputDataServices 3, 'Капитальный ремонт', 1, 4740
+exec inputDataServices 3, 'РљР°РїРёС‚Р°Р»СЊРЅС‹Р№ СЂРµРјРѕРЅС‚', 1, 4740
 go
-exec inputDataServices 4, 'Черновой ремонт', 2, 2500 --за кв. метр
+exec inputDataServices 4, 'Р§РµСЂРЅРѕРІРѕР№ СЂРµРјРѕРЅС‚', 2, 2500 --Р·Р° РєРІ. РјРµС‚СЂ
 go
-exec inputDataServices 5, 'Косметический ремонт', 2, 2600
+exec inputDataServices 5, 'РљРѕСЃРјРµС‚РёС‡РµСЃРєРёР№ СЂРµРјРѕРЅС‚', 2, 2600
 go
-exec inputDataServices 6, 'Капитальный ремонт', 2, 4800
+exec inputDataServices 6, 'РљР°РїРёС‚Р°Р»СЊРЅС‹Р№ СЂРµРјРѕРЅС‚', 2, 4800
 go
-exec inputDataServices 7, 'Черновой ремонт', 3, 2350 --за кв. метр
+exec inputDataServices 7, 'Р§РµСЂРЅРѕРІРѕР№ СЂРµРјРѕРЅС‚', 3, 2350 --Р·Р° РєРІ. РјРµС‚СЂ
 go
-exec inputDataServices 8, 'Евроремонт', 3, 6300
+exec inputDataServices 8, 'Р•РІСЂРѕСЂРµРјРѕРЅС‚', 3, 6300
 go
-exec inputDataServices 9, 'Капитальный ремонт', 3, 4750
+exec inputDataServices 9, 'РљР°РїРёС‚Р°Р»СЊРЅС‹Р№ СЂРµРјРѕРЅС‚', 3, 4750
 go
 
 --drop proc inputDataServices
 --go
 
 
---Договор
+--Р”РѕРіРѕРІРѕСЂ
 create proc inputDataContract( @iCon int, @iCus int, @iS int, @mAdd money,
 @dateB date, @dateE date, @mC money )
 as
@@ -221,10 +221,10 @@ go
 
 
 
---		Удаление данных из таблиц
+--		РЈРґР°Р»РµРЅРёРµ РґР°РЅРЅС‹С… РёР· С‚Р°Р±Р»РёС†
 
 
---Заказчик (по диапозону индексов)
+--Р—Р°РєР°Р·С‡РёРє (РїРѕ РґРёР°РїРѕР·РѕРЅСѓ РёРЅРґРµРєСЃРѕРІ)
 create proc deleteDataCustomer_iSiF( @iS int, @iF int )
 as
 begin
@@ -252,7 +252,7 @@ go
 --go
 
 
---Компании (по диапозону индексов)
+--РљРѕРјРїР°РЅРёРё (РїРѕ РґРёР°РїРѕР·РѕРЅСѓ РёРЅРґРµРєСЃРѕРІ)
 create proc deleteDataCompanies_iSiF( @iS int, @iF int )
 as
 begin
@@ -280,7 +280,7 @@ go
 --go
 
 
---Сотрудники (по диапозону индексов)
+--РЎРѕС‚СЂСѓРґРЅРёРєРё (РїРѕ РґРёР°РїРѕР·РѕРЅСѓ РёРЅРґРµРєСЃРѕРІ)
 create proc deleteDataEmployees_iSiF( @iS int, @iF int )
 as
 begin
@@ -308,7 +308,7 @@ go
 --go
 
 
---КомпанииСотрудники (по диапозону индексов)
+--РљРѕРјРїР°РЅРёРёРЎРѕС‚СЂСѓРґРЅРёРєРё (РїРѕ РґРёР°РїРѕР·РѕРЅСѓ РёРЅРґРµРєСЃРѕРІ)
 create proc deleteDataCompaniesEmployees_iSiF( @iCmpS int, @iCmpF int,
 @iEmpS int, @iEmpF int )
 as
@@ -348,7 +348,7 @@ go
 --go
 
 
---Сервисы (по диапозону индексов)
+--РЎРµСЂРІРёСЃС‹ (РїРѕ РґРёР°РїРѕР·РѕРЅСѓ РёРЅРґРµРєСЃРѕРІ)
 create proc deleteDataServices_iSiF( @iS int, @iF int )
 as
 begin
@@ -376,7 +376,7 @@ go
 --go
 
 
---Договор (по диапозону индексов)
+--Р”РѕРіРѕРІРѕСЂ (РїРѕ РґРёР°РїРѕР·РѕРЅСѓ РёРЅРґРµРєСЃРѕРІ)
 create proc deleteDataContract_iSiF( @iS int, @iF int )
 as
 begin
@@ -404,7 +404,7 @@ go
 --go
 
 
---Сотрудники (по содержимому)
+--РЎРѕС‚СЂСѓРґРЅРёРєРё (РїРѕ СЃРѕРґРµСЂР¶РёРјРѕРјСѓ)
 create proc deleteDataEmployees_Content( @nvcS nvarchar(70), @nvcN nvarchar(70),
 @nvcP nvarchar(70), @c char(20), @vc varchar(250) )
 as
@@ -415,7 +415,7 @@ begin
 end
 go
 
-exec deleteDataEmployees_Content 'Крюкова', 'Светлана', 'Петровна', '+79993890005',
+exec deleteDataEmployees_Content 'РљСЂСЋРєРѕРІР°', 'РЎРІРµС‚Р»Р°РЅР°', 'РџРµС‚СЂРѕРІРЅР°', '+79993890005',
 'ksp05mail@peremont.ru'
 go
 
@@ -424,10 +424,10 @@ go
 
 
 
---		удаление Всех записей из таблиц
+--		СѓРґР°Р»РµРЅРёРµ Р’СЃРµС… Р·Р°РїРёСЃРµР№ РёР· С‚Р°Р±Р»РёС†
 
 
---Заказчик
+--Р—Р°РєР°Р·С‡РёРє
 create proc deleteAllRecordsCustomer
 as
 begin
@@ -442,7 +442,7 @@ go
 --go
 
 
---Компании
+--РљРѕРјРїР°РЅРёРё
 create proc deleteAllRecordsCompanies
 as
 begin
@@ -457,7 +457,7 @@ go
 --go
 
 
---Сотрудники
+--РЎРѕС‚СЂСѓРґРЅРёРєРё
 create proc deleteAllRecordsEmployees
 as
 begin
@@ -472,7 +472,7 @@ go
 --go
 
 
---КомпанииСотрудники
+--РљРѕРјРїР°РЅРёРёРЎРѕС‚СЂСѓРґРЅРёРєРё
 create proc deleteAllRecordsCompaniesEmployees
 as
 begin
@@ -487,7 +487,7 @@ go
 --go
 
 
---Услуги
+--РЈСЃР»СѓРіРё
 create proc deleteAllRecordsServices
 as
 begin
@@ -502,7 +502,7 @@ go
 --go
 
 
---Договор
+--Р”РѕРіРѕРІРѕСЂ
 create proc deleteAllRecordsContract
 as
 begin
@@ -518,10 +518,10 @@ go
 
 
 
---		Обновление данных в таблицах
+--		РћР±РЅРѕРІР»РµРЅРёРµ РґР°РЅРЅС‹С… РІ С‚Р°Р±Р»РёС†Р°С…
 
 
---Сотрудники
+--РЎРѕС‚СЂСѓРґРЅРёРєРё
 create proc updateDataEmployees_ID( @i int, @nvcS nvarchar(70), @nvcN nvarchar(70),
 @nvcP nvarchar(70), @c char(20), @vc varchar(250) )
 as
@@ -532,7 +532,7 @@ begin
 end
 go
 
-exec updateDataEmployees_ID 15, 'Крюкова', 'Светлана', 'Петровна', '+79993890005',
+exec updateDataEmployees_ID 15, 'РљСЂСЋРєРѕРІР°', 'РЎРІРµС‚Р»Р°РЅР°', 'РџРµС‚СЂРѕРІРЅР°', '+79993890005',
 'ksp05mail@peremont.ru'
 go
 
@@ -540,7 +540,7 @@ go
 --go
 
 
---Заказчик (индекс)
+--Р—Р°РєР°Р·С‡РёРє (РёРЅРґРµРєСЃ)
 create proc updateDataCustomer_resetID( @i int)
 as
 begin
@@ -555,7 +555,7 @@ go
 --go
 
 
---Компанни (индекс)
+--РљРѕРјРїР°РЅРЅРё (РёРЅРґРµРєСЃ)
 create proc updateDataCompanies_resetID( @i int )
 as
 begin
@@ -570,7 +570,7 @@ go
 --go
 
 
---Сотрудники (индекс)
+--РЎРѕС‚СЂСѓРґРЅРёРєРё (РёРЅРґРµРєСЃ)
 create proc updateDataEmployees_resetID( @i int)
 as
 begin

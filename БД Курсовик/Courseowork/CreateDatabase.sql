@@ -2,25 +2,25 @@ use master
 go
 
 create database ARCs
---основной файл
+--РѕСЃРЅРѕРІРЅРѕР№ С„Р°Р№Р»
 on primary
 (
 name = ARCs_dat,
 filename = "C:\Program Files\Microsoft SQL Server\
 MSSQL10.MSSQLSERVER\MSSQL\DATA\ARCs_dat.mdf",
---filename = "E:\MS SQL Server 2017 Edition\Компоненты\MSSQL14.SQLEXPRESS\
+--filename = "E:\MS SQL Server 2017 Edition\РљРѕРјРїРѕРЅРµРЅС‚С‹\MSSQL14.SQLEXPRESS\
 --MSSQL\DATA\ARCs_dat.mdf",
-size = 4,--первоначальный размер файла
+size = 4,--РїРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°
 maxsize = 10,
 filegrowth = 1
 )
---журнал файл
+--Р¶СѓСЂРЅР°Р» С„Р°Р№Р»
 log on
 (
 name = ARCs_log,
 filename = "C:\Program Files\Microsoft SQL Server\
 MSSQL10.MSSQLSERVER\MSSQL\DATA\ARCs_log.ldf",
---filename = "E:\MS SQL Server 2017 Edition\Компоненты\MSSQL14.SQLEXPRESS\
+--filename = "E:\MS SQL Server 2017 Edition\РљРѕРјРїРѕРЅРµРЅС‚С‹\MSSQL14.SQLEXPRESS\
 --MSSQL\DATA\ARCs_log.ldf",
 size = 2,
 maxsize = 5,

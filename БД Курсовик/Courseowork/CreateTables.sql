@@ -1,19 +1,19 @@
 use ARCs
 go
 
-create table dbo.Customer-- Заказчик
+create table dbo.Customer-- Р—Р°РєР°Р·С‡РёРє
 (
-	ID_customer int identity(1,1) not null,--ID заказчика
+	ID_customer int identity(1,1) not null,--ID Р·Р°РєР°Р·С‡РёРєР°
 	constraint PK_Customer primary key clustered (ID_customer),
-	Surname nvarchar(70) not null,--Фамилия
+	Surname nvarchar(70) not null,--Р¤Р°РјРёР»РёСЏ
 	Name nvarchar(70) not null,
-	Patronymic nvarchar(70) not null,--Отчество
+	Patronymic nvarchar(70) not null,--РћС‚С‡РµСЃС‚РІРѕ
 	Phone char(20) not null,
 	Email varchar(250) null
 )
 go
 
-create table dbo.Companies-- Компании
+create table dbo.Companies-- РљРѕРјРїР°РЅРёРё
 (
 	ID_company int identity(1,1) not null,
 	constraint PK_Companies primary key clustered (ID_company),
@@ -23,7 +23,7 @@ create table dbo.Companies-- Компании
 )
 go
 
-create table dbo.Employees-- Сотрудники
+create table dbo.Employees-- РЎРѕС‚СЂСѓРґРЅРёРєРё
 (
 	ID_employee int identity(1,1) not null,
 	constraint PK_Employees primary key clustered (ID_employee),
@@ -35,7 +35,7 @@ create table dbo.Employees-- Сотрудники
 )
 go
 
-create table dbo.CompaniesEmployees-- КомпанииСотрудники
+create table dbo.CompaniesEmployees-- РљРѕРјРїР°РЅРёРёРЎРѕС‚СЂСѓРґРЅРёРєРё
 (
 	ID_company int not null,
 	ID_employee int not null,
@@ -51,7 +51,7 @@ create table dbo.CompaniesEmployees-- КомпанииСотрудники
 )
 go
 
-create table dbo.Services-- Услуги
+create table dbo.Services-- РЈСЃР»СѓРіРё
 (
 	ID_service int not null,
 	constraint PK_Services primary key nonclustered (ID_service),
@@ -65,7 +65,7 @@ create table dbo.Services-- Услуги
 )
 go
 
-create table dbo.Contract-- Договор
+create table dbo.Contract-- Р”РѕРіРѕРІРѕСЂ
 (
 	ID_contract int not null,
 	constraint PK_Contract primary key nonclustered (ID_contract),
@@ -79,9 +79,9 @@ create table dbo.Contract-- Договор
 	references dbo.Services (ID_service)
 	on delete cascade
 	on update cascade,
-	Additional_expenses money not null,--дополнительные расходы
-	Date_beginning date not null,--дата начала
-	Date_expiration date not null,--дата окончания
+	Additional_expenses money not null,--РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЂР°СЃС…РѕРґС‹
+	Date_beginning date not null,--РґР°С‚Р° РЅР°С‡Р°Р»Р°
+	Date_expiration date not null,--РґР°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ
 	Cost money not null
 )
 go
