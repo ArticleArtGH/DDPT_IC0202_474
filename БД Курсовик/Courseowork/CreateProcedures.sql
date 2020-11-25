@@ -207,13 +207,13 @@ go
 
 exec inputDataContract 1, 1, 5, 1500, '2020-9-21', '2020-11-20', 92500
 go
-exec inputDataContract 2, 2, 1, 500, '2020-10-05', '2021-11-04', 81500
+exec inputDataContract 2, 2, 1, 500, '2020-10-05', '2020-11-04', 81500
 go
 exec inputDataContract 3, 3, 8, 5000, '2020-10-11', '2020-12-01', 225500
 go
 exec inputDataContract 4, 4, 9, 4500, '2021-01-21', '2021-03-22', 170750
 go
-exec inputDataContract 5, 5, 7, 1000, '2020-02-14', '2021-03-17', 93000
+exec inputDataContract 5, 5, 7, 1000, '2021-02-14', '2021-03-17', 93000
 go
 
 --drop proc inputDataContract
@@ -578,7 +578,7 @@ begin
 end
 go
 
-exec updateDataEmployees_resetID 14
+exec updateDataEmployees_resetID 0
 go
 
 --drop proc updateDataEmployees_resetID

@@ -85,21 +85,19 @@ go
 
 
 --Компании с их услугами и сроками выполнения этих услуг
---create view TermsOfWorkOfCompanies
---as
---select ID_company, Companies.Name, Services.Name, Date_beginnig, Date_expiration
---from Companies as Cmp, Services as S, Contract as Cnt
---full outer join Services s on Cmp.ID_company = s.ID_company--Cmp.ID_company = S.ID_company
---where --Cnt.ID_service = S.ID_service --and 
-----S.ID_company = Cmp.ID_company
---go
 create view TermsOfWorkOfCompanies
 as
-select Cmp.ID_company, Cmp.Name as 'Company Name', S.Name as 'Service Name',
+--select Cmp.ID_company, Cmp.Name as 'Company Name', S.Name as 'Service Name',
+--Date_beginning, Date_expiration
+--from Companies as Cmp, Services as S, Contract as Cnt
+--where Cnt.ID_service = S.ID_service and 
+--S.ID_company = Cmp.ID_company
+--OR
+select Cmp.ID_company, Cmp.Name 'Company Name', S.Name 'Service Name',
 Date_beginning, Date_expiration
-from Companies as Cmp, Services as S, Contract as Cnt
-where Cnt.ID_service = S.ID_service and 
-S.ID_company = Cmp.ID_company
+from Companies Cmp--, Services S, Contract Cnt
+join Services S on Cmp.ID_company = S.ID_company
+join Contract Cnt on Cnt.ID_service = S.ID_service
 go
 
 select * from TermsOfWorkOfCompanies
@@ -144,14 +142,70 @@ go
 --go
 
 
+
 --		Представления с использованием расчётных полей
+
+
+--
+
+
+
+--Сроки ремонтов в днях
+create view TermsRepairsDays
+as
+	select Cr.Name as 'Name Customer', S.Name as 'Name Service',
+	datediff(day, Ct.Date_beginning, Ct.Date_expiration) as 'Terms'
+	from Customer as Cr, Services as S, Contract as Ct	
+	where Ct.ID_service = S.ID_service and Ct.ID_customer = Cr.ID_customer
+go
+
+select * from TermsRepairsDays
+go
+
+--drop view TermsRepairsDays
+--go
 
 
 
 --		Представление с использованием групповых операций
 
---Количество каждой услуги
 
+--Количество каждой услуги
+create view CountEachServices
+as
+	select Name, count(Name) as 'Count Services' 
+	from Services 
+	group by Name
+go
+
+select * from CountEachServices
+go
+
+--drop view CountEveryServices
+--go
+
+
+--Сколько заказчиков у каждой компании
+create view CountCustomerEachCompany
+as
+	--select Cmp.Name 'Company Name', Count(Ctr.Name) 'Count Customer'
+	--from Contract Cnt, Companies Cmp
+	--join Customer Ctr on Ctr.ID_customer = Cnt.ID_customer
+	--join Services S on S.ID_company = Cmp.ID_company
+	----join Services S on S.ID_service = Cnt.ID_service--S.ID_service = Cnt.ID_service
+	----join Companies Cmp on Cmp.ID_company = S.ID_company
+	--group by Cmp.Name
+	select Cmp.Name 'Company Name', Count(Ctr.Name) 'Count Customer'
+	from Contract Cnt, Companies Cmp, Customer Ctr, Services S
+	where Ctr.ID_customer = Cnt.ID_customer and S.ID_company = Cmp.ID_company
+	group by Cmp.Name, Ctr.Name
+go
+
+select * from CountCustomerEachCompany
+go
+
+--drop view CountCustomerEachCompany
+--go
 
 
 --Заказчик
