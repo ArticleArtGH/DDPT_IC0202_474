@@ -1,20 +1,20 @@
 use ARCs
 go
 
---		создание Уч. записей
+--		СЃРѕР·РґР°РЅРёРµ РЈС‡. Р·Р°РїРёСЃРµР№
 
 create login Manager_ARCs
 with password = 'logM474',
 default_database = ARCs,
-default_language = русский,
-check_expiration = off,--проверять ли срок использования пароля
-check_policy=off--политика паролей
+default_language = СЂСѓСЃСЃРєРёР№,
+check_expiration = off,--РїСЂРѕРІРµСЂСЏС‚СЊ Р»Рё СЃСЂРѕРє РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ РїР°СЂРѕР»СЏ
+check_policy=off--РїРѕР»РёС‚РёРєР° РїР°СЂРѕР»РµР№
 go
 
 create login Employee_ARCs
 with password = 'logE474',
 default_database = ARCs,
-default_language = русский,
+default_language = СЂСѓСЃСЃРєРёР№,
 check_expiration = off,
 check_policy = off
 go
@@ -22,7 +22,7 @@ go
 create login Client_ARCs
 with password = 'logC474',
 default_database = ARCs,
-default_language = русский,
+default_language = СЂСѓСЃСЃРєРёР№,
 check_expiration = off,
 check_policy = off
 go
@@ -36,7 +36,7 @@ go
 --go
 
 
---		создание Пользователей
+--		СЃРѕР·РґР°РЅРёРµ РџРѕР»СЊР·РѕРІР°С‚РµР»РµР№
 
 create user uManager_ARCs
 for login Manager_ARCs
@@ -54,15 +54,15 @@ go
 --go
 
 
---		создание Ролей
+--		СЃРѕР·РґР°РЅРёРµ Р РѕР»РµР№
 
-create role rManager_ARCs--Менеджеры
-create role rEmployee_ARCs--Сотрудники
-create role rClient_ARCs--Клиенты
+create role rManager_ARCs--РњРµРЅРµРґР¶РµСЂС‹
+create role rEmployee_ARCs--РЎРѕС‚СЂСѓРґРЅРёРєРё
+create role rClient_ARCs--РљР»РёРµРЅС‚С‹
 
 --drop role rEmployee_ARCs
 
---добавление пользователей в роль
+--РґРѕР±Р°РІР»РµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РІ СЂРѕР»СЊ
 
 exec sp_addrolemember @rolename = rManager_ARCs,
 @membername = uManager_ARCs
@@ -79,9 +79,9 @@ exec sp_addrolemember @rolename = rClient_ARCs,
 --exec sp_droprolemember @rolename = rEmployee_ARCs,
 --@membername = uEmployee_ARCs
 
---		Информация
+--		РРЅС„РѕСЂРјР°С†РёСЏ
 
--- о Роли
+-- Рѕ Р РѕР»Рё
 
 exec sp_helprole @rolename = rManager_ARCs
 go
@@ -90,7 +90,7 @@ go
 exec sp_helprole @rolename = rClient_ARCs
 go
 
--- о Пользователях
+-- Рѕ РџРѕР»СЊР·РѕРІР°С‚РµР»СЏС…
 
 exec sp_helpuser uManager_ARCs
 go
@@ -100,33 +100,33 @@ exec sp_helpuser uClient_ARCs
 go
 
 
---		Разрешения
+--		Р Р°Р·СЂРµС€РµРЅРёСЏ
 
 
---Заказчик (клиент)
+--Р—Р°РєР°Р·С‡РёРє (РєР»РёРµРЅС‚)
 
---Чтение таблицы услуги и компании
+--Р§С‚РµРЅРёРµ С‚Р°Р±Р»РёС†С‹ СѓСЃР»СѓРіРё Рё РєРѕРјРїР°РЅРёРё
 grant select on Services to rClient_ARCs
 go
 grant select on Companies to rClient_ARCs
 go
---представление
+--РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ
 grant select on CompaniesTheirServices to rClient_ARCs 
 go
 --revoke select on CompaniesTheirServices to rClient_ARCs
 --go
 
---Сотрудник
+--РЎРѕС‚СЂСѓРґРЅРёРє
 
---на Чтение, Добавление и Удаление
+--РЅР° Р§С‚РµРЅРёРµ, Р”РѕР±Р°РІР»РµРЅРёРµ Рё РЈРґР°Р»РµРЅРёРµ
 --grant select, 
 
---на создание Резервного копирования, также дать возможность это делать Менеджеру
---сотруднику не надо наверное довать возможнность создавать устройство резервного
---копирования, а сохранять в существующие,
---созданное Менеджером или Админом.
+--РЅР° СЃРѕР·РґР°РЅРёРµ Р РµР·РµСЂРІРЅРѕРіРѕ РєРѕРїРёСЂРѕРІР°РЅРёСЏ, С‚Р°РєР¶Рµ РґР°С‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ СЌС‚Рѕ РґРµР»Р°С‚СЊ РњРµРЅРµРґР¶РµСЂСѓ
+--СЃРѕС‚СЂСѓРґРЅРёРєСѓ РЅРµ РЅР°РґРѕ РЅР°РІРµСЂРЅРѕРµ РґРѕРІР°С‚СЊ РІРѕР·РјРѕР¶РЅРЅРѕСЃС‚СЊ СЃРѕР·РґР°РІР°С‚СЊ СѓСЃС‚СЂРѕР№СЃС‚РІРѕ СЂРµР·РµСЂРІРЅРѕРіРѕ
+--РєРѕРїРёСЂРѕРІР°РЅРёСЏ, Р° СЃРѕС…СЂР°РЅСЏС‚СЊ РІ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёРµ,
+--СЃРѕР·РґР°РЅРЅРѕРµ РњРµРЅРµРґР¶РµСЂРѕРј РёР»Рё РђРґРјРёРЅРѕРј.
 
---Менеджер
+--РњРµРЅРµРґР¶РµСЂ
 
 grant all on Companies to rManager_ARCs
 go
@@ -142,7 +142,7 @@ grant all on Contract to rManager_ARCs
 go
 
 
---просмотр прав у Пользователя или Роли
+--РїСЂРѕСЃРјРѕС‚СЂ РїСЂР°РІ Сѓ РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР»Рё Р РѕР»Рё
 
 sp_helprotect null, rManager_ARCs
 go
@@ -155,6 +155,6 @@ go
 --go
 sp_helprotect Services, null
 go
---всё обо всех
+--РІСЃС‘ РѕР±Рѕ РІСЃРµС…
 sp_helprotect null, null
 go
