@@ -5,7 +5,7 @@ go
 
 
 
---		Вывод содержимого таблиц
+--		Вывод содержимого таблиц (для проверки)
 
 
 --Заказчик
@@ -31,6 +31,7 @@ go
 --Договор
 select * from Contract
 go
+
 
 
 --		Представления на выборку данных из нескольких таблиц с использованием
@@ -84,7 +85,7 @@ go
 --go
 
 
---Компании с их услугами и сроками выполнения этих услуг
+--Компании с их услугами и сроками выполнения этих услуг по заказу
 create view TermsOfWorkOfCompanies
 as
 --select Cmp.ID_company, Cmp.Name as 'Company Name', S.Name as 'Service Name',
@@ -108,46 +109,22 @@ go
 
 
 
-----У кого из заказчиков нету электронной почты
---create view CustomerNotEmail 
---as
---select  Surname, Name, Patronymic
---from Customer
---where Customer.Email = ''  
---go
-
---select * from CustomerNotEmail
---go
-
---drop view CustomerNotEmail
---go
-
-
-----Каких услуг нет в других компаниях
---create view ServeciesNotInOthersCompanies
---as
---select Name, 
-
-
-
-
---
-
-----У какой компании какие заказчики
---create view CompaniesTheirCustomer 
---as
---select  Surname, Name, Patronimic
---from Companies, Customer
---where 
---go
-
-
-
 --		Представления с использованием расчётных полей
 
 
---
+--Каков доход, если будут выполнены все заказы
+create view IncomeAllOrdersFulfilled
+as
+	select sum(Cnt.Cost) 'Income'
+	from Contract Cnt, Customer Csr,Services S
+	where Cnt.ID_customer = Csr.ID_customer and Cnt.ID_service = S.ID_service
+go
 
+select * from IncomeAllOrdersFulfilled
+go
+
+--drop view IncomeAllOrdersFulfilled
+--go
 
 
 --Сроки ремонтов в днях
@@ -189,16 +166,16 @@ go
 create view CountCustomerEachCompany
 as
 	--select Cmp.Name 'Company Name', Count(Ctr.Name) 'Count Customer'
-	--from Contract Cnt, Companies Cmp
-	--join Customer Ctr on Ctr.ID_customer = Cnt.ID_customer
+	--from Companies Cmp
 	--join Services S on S.ID_company = Cmp.ID_company
-	----join Services S on S.ID_service = Cnt.ID_service--S.ID_service = Cnt.ID_service
-	----join Companies Cmp on Cmp.ID_company = S.ID_company
+	--join Contract Cnt on Cnt.ID_service = S.ID_service
+	--join Customer Ctr on Cnt.ID_customer = Ctr.ID_customer 
 	--group by Cmp.Name
 	select Cmp.Name 'Company Name', Count(Ctr.Name) 'Count Customer'
 	from Contract Cnt, Companies Cmp, Customer Ctr, Services S
-	where Ctr.ID_customer = Cnt.ID_customer and S.ID_company = Cmp.ID_company
-	group by Cmp.Name, Ctr.Name
+	where Cnt.ID_customer = Ctr.ID_customer  and S.ID_company = Cmp.ID_company
+	and Cnt.ID_service = S.ID_service
+	group by Cmp.Name
 go
 
 select * from CountCustomerEachCompany
@@ -206,11 +183,3 @@ go
 
 --drop view CountCustomerEachCompany
 --go
-
-
---Заказчик
---Компании
---Сотрудники
---КомпанииСотрудники
---Услуги
---Договор
