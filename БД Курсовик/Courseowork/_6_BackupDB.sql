@@ -1,13 +1,13 @@
 use ARCs
 go
 
---создание устройств резерного копирования
+--СЃРѕР·РґР°РЅРёРµ СѓСЃС‚СЂРѕР№СЃС‚РІ СЂРµР·РµСЂРЅРѕРіРѕ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 
---для БД
-exec sp_addumpdevice 'disk', 'deviceARCs_DB', 'E:\MS SQL Server 2017 Edition\Компоненты\
+--РґР»СЏ Р‘Р”
+exec sp_addumpdevice 'disk', 'deviceARCs_DB', 'E:\MS SQL Server 2017 Edition\РљРѕРјРїРѕРЅРµРЅС‚С‹\
 MSSQL14.SQLEXPRESS\MSSQL\Backup\deviceARCs_DB.bak'
---для Журналов транзакций
-exec sp_addumpdevice 'disk', 'deviceARCs_Log', 'E:\MS SQL Server 2017 Edition\Компоненты\
+--РґР»СЏ Р–СѓСЂРЅР°Р»РѕРІ С‚СЂР°РЅР·Р°РєС†РёР№
+exec sp_addumpdevice 'disk', 'deviceARCs_Log', 'E:\MS SQL Server 2017 Edition\РљРѕРјРїРѕРЅРµРЅС‚С‹\
 MSSQL14.SQLEXPRESS\MSSQL\Backup\deviceARCs_Log.bak'
 go
 
@@ -17,16 +17,16 @@ go
 --go
 
 
---Резерное копирование
+--Р РµР·РµСЂРЅРѕРµ РєРѕРїРёСЂРѕРІР°РЅРёРµ
 
---БД
+--Р‘Р”
 backup database ARCs to deviceARCs_DB
 go
 
---Журналов транзакций
+--Р–СѓСЂРЅР°Р»РѕРІ С‚СЂР°РЅР·Р°РєС†РёР№
 backup log ARCs to deviceARCs_Log
 go
 
---Разностная
+--Р Р°Р·РЅРѕСЃС‚РЅР°СЏ
 backup database ARCs to deviceARCs_DB with differential
 go
