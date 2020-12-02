@@ -143,6 +143,22 @@ go
 --go
 
 
+--В какой день будет половина выполненной услуги
+create view HalfDateServicesPerfomed
+as
+	select Ct.ID_customer 'ID customer', Cr.Surname+' '+Cr.Name+' '+Cr.Patronymic 'SNP',
+	S.ID_service 'ID service', S.Name 'Name service', 
+	dateadd(day ,datediff(day, Ct.Date_beginning, Ct.Date_expiration)/2, Ct.Date_beginning ) 'Half terms'
+	from Customer Cr, Services S, Contract Ct
+	where Ct.ID_customer = Cr.ID_customer and Ct.ID_service = S.ID_service
+go
+
+select * from HalfDateServicesPerfomed
+go
+
+--drop view HalfDateServicesPerfomed
+--go
+
 
 --		Представление с использованием групповых операций
 
@@ -182,4 +198,20 @@ select * from CountCustomerEachCompany
 go
 
 --drop view CountCustomerEachCompany
+--go
+
+
+--Сколько сотрудников у каждой компании
+create view CountEmployeesEachCompanies
+as
+	select Cmp.Name, Count(Emp.Name) 'Count Employees'
+	from Companies Cmp, Employees Emp, CompaniesEmployees CE
+	where CE.ID_company = Cmp.ID_company and CE.ID_employee = Emp.ID_employee
+	group by Cmp.Name
+go
+
+select * from CountEmployeesEachCompanies
+go
+
+--drop view CountEmployeesEachCompanies
 --go

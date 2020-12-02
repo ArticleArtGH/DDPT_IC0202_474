@@ -423,6 +423,19 @@ go
 --go
 
 
+--Сотрудники (телефон или почта)
+create proc deleteDataEmployees_PhoneOrEmail( @c char(20), @vc varchar(250) )
+as
+	delete from Employees
+	where Phone = @c or Email = @vc
+go
+
+exec deleteDataEmployees_PhoneOrEmail '+79994671001', 'zdv01@mail.ru'
+go
+
+--drop deleteDataEmployees_PhoneOrEmail
+--go
+
 
 --		удаление Всех записей из таблиц
 
@@ -533,7 +546,10 @@ end
 go
 
 exec updateDataEmployees_ID 15, 'Крюкова', 'Светлана', 'Петровна', '+79993890005',
-'ksp05mail@peremont.ru'
+'ksp05mail@peremont.ru, ksp052@gmail.com'
+go
+
+select * from Employees
 go
 
 --drop proc updateDataEmployees_ID
@@ -582,4 +598,22 @@ exec updateDataEmployees_resetID 0
 go
 
 --drop proc updateDataEmployees_resetID
+--go
+
+
+--Сотрудник (телефон и почта)
+create proc updateDataEmployees_PhoneEmail(@i int, @c char(20), @vc varchar(250))
+as
+	update Employees
+	set Phone = @C, Email = @vc
+	where ID_employee = @i
+go
+
+exec updateDataEmployees_PhoneEmail 1, '+79994671001', 'zdv01@mail.ru' 
+go
+
+select * from Employees
+go
+
+--drop proc updateDataEmployees_PhoneEmail
 --go
